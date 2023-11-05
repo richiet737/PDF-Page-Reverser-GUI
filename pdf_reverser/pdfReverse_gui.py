@@ -51,8 +51,6 @@ class Application(tk.Frame):
         self.fileEntry.grid(row=1, column=2, sticky=tk.W)
 
         #choose file button at 2x1
-        # Button with black border
-        border = LabelFrame(rootFrame, bd = 6, bg = "black")
         fb = tk.Button(rootFrame, text="Choose File", width = 10, fg= "green", padx=2, pady=2, command=self.fileCallback)
         fb.grid(row=2,column=2, sticky=tk.W)
 
