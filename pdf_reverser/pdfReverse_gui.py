@@ -11,7 +11,6 @@ import sys
 import tkinter as tk
 from tkinter import messagebox
 from tkinter import filedialog as fd
-from tkinter import *
 
 from modules import pdfFileManager
 
@@ -21,7 +20,7 @@ class Application(tk.Frame):
     def __init__(self, root):
         
         #attributes defined in __init are instance attributes and must use the self prefix
-        #define the window
+        #define the window size
         root.geometry("400x200")
         root.title("PDF file page reverser")
         root.columnconfigure(0, weight=1)
@@ -35,14 +34,13 @@ class Application(tk.Frame):
 
         # set the number of rows and columns
         # minimum size, in screen units (px)
-        #rootFrame.columnconfigure((0, 1, 2,3,4,5,6,7,8,9), weight=1, minsize=20)  # choose appropriate size
-        rootFrame.rowconfigure((0, 1, 2, 3, 4,5,6), weight=1, minsize=20)  # here minsize is optional
+        rootFrame.rowconfigure((0, 1, 2, 3, 4, 5, 6), weight=1, minsize=20)  # here minsize is optional
    
         tk.Frame.__init__(self, root)
 
         #add a label at 0x1
         l = tk.Label(rootFrame, fg= "green", bg="lightgray", padx=2, pady=2, text="type path or choose file")
-        l.grid(row=0,column=2, sticky=W)
+        l.grid(row=0,column=2, sticky=tk.W)
 
         # add a label at 1x1
         fileLabel = tk.Label(rootFrame, text="File to reverse :", fg="green", bg="lightgray", width = 13, padx=2, pady=2, font=(None, 14))
@@ -50,18 +48,17 @@ class Application(tk.Frame):
 
         #add text entry box at 1x2
         self.fileEntry = tk.Entry(rootFrame, state="normal", textvariable=self.fileMan.fileName)
-        self.fileEntry.grid(row=1, column=2, sticky=W)
+        self.fileEntry.grid(row=1, column=2, sticky=tk.W)
 
         #choose file button at 2x1
         # Button with black border
         border = LabelFrame(rootFrame, bd = 6, bg = "black")
-        #border.pack(pady = 10)
         fb = tk.Button(rootFrame, text="Choose File", width = 10, fg= "green", padx=2, pady=2, command=self.fileCallback)
-        fb.grid(row=2,column=2, sticky=W)
+        fb.grid(row=2,column=2, sticky=tk.W)
 
         #process button at 3x1
         mb = tk.Button(rootFrame, text="Process File", width = 10, fg="green", padx=2, pady=2, command=self.msgCallback) #.pack(pady=10)
-        mb.grid(row=3,column=2, sticky=W)
+        mb.grid(row=3,column=2, sticky=tk.W)
         
     #### message dialogue displayed at process file button press ####
     def msgCallback(self):
